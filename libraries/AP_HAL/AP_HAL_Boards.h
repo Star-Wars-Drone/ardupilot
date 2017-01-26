@@ -35,6 +35,9 @@
 #define HAL_BOARD_SUBTYPE_LINUX_DISCO      1014
 #define HAL_BOARD_SUBTYPE_LINUX_AERO       1015
 #define HAL_BOARD_SUBTYPE_LINUX_DARK       1016
+//FIXME Added new subtype as the next iterator
+#define HAL_BOARD_SUBTYPE_LINUX_DB410C     1017
+#define HAL_BOARD_SUBTYPE_LINUX_HIKEY      1018
 
 /* HAL PX4 sub-types, starting at 2000 */
 #define HAL_BOARD_SUBTYPE_PX4_V1           2000
@@ -66,6 +69,7 @@
 #define HAL_INS_QURT        16
 #define HAL_INS_BBBMINI     17
 #define HAL_INS_AERO        18
+#define HAL_INS_DB410C      19
 
 /* Barometer driver types */
 #define HAL_BARO_BMP085      1
@@ -96,6 +100,8 @@
 #define HAL_COMPASS_NAVIO2             14
 #define HAL_COMPASS_NAVIO              15
 #define HAL_COMPASS_AERO               16
+#define HAL_COMPASS_DB410C             17
+
 
 /* Heat Types */
 #define HAL_LINUX_HEAT_PWM 1

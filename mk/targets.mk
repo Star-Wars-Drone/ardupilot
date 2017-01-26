@@ -62,6 +62,18 @@ raspilot: TOOLCHAIN = RPI
 raspilot: BUILDSYS_DEPRECATED = 1
 raspilot: all
 
+#FIXME Added DB 410C tool chain
+db410c: HAL_BOARD = HAL_BOARD_LINUX
+db410c: TOOLCHAIN = DB410C
+db410c: BUILDSYS_DEPRECATED = 1
+db410c: all
+
+#FIXME Added DB 410C tool chain
+hikey: HAL_BOARD = HAL_BOARD_LINUX
+hikey: TOOLCHAIN = HIKEY
+hikey: BUILDSYS_DEPRECATED = 1
+hikey: all
+
 erlebrain2: HAL_BOARD = HAL_BOARD_LINUX
 erlebrain2: TOOLCHAIN = RPI
 erlebrain2: BUILDSYS_DEPRECATED  = 1
@@ -113,7 +125,8 @@ qurt: all
 
 # cope with copter and hil targets
 FRAMES = quad tri hexa y6 octa octa-quad heli single coax obc nologging
-BOARDS = apm1 apm2 apm2beta apm1-1280 px4 px4-v1 px4-v2 px4-v4 sitl flymaple linux erle pxf navio navio2 raspilot bbbmini minlure erlebrain2 bhat qflight pxfmini
+#FIXME Added DB410C as a possible board at the end
+BOARDS = apm1 apm2 apm2beta apm1-1280 px4 px4-v1 px4-v2 px4-v4 sitl flymaple linux erle pxf navio navio2 raspilot bbbmini minlure erlebrain2 bhat qflight pxfmini db410c hikey
 BOARDS += vrbrain
 BOARDS += vrbrain-v51 vrbrain-v52 vrbrain-v54
 BOARDS += vrcore-v10

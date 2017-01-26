@@ -54,6 +54,26 @@ RPI_LD      :=  arm-linux-gnueabihf-g++
 RPI_GDB     :=  arm-linux-gnueabihf-gdb
 RPI_OBJCOPY :=  arm-linux-gnueabihf-obj
 
+#FIXME added toolchains for the DB410C
+# toolchains for DB410C
+DB410C_CXX     :=  aarch64-linux-gnu-g++
+DB410C_CC      :=  aarch64-linux-gnu-gcc
+DB410C_AS      :=  aarch64-linux-gnu-gcc
+DB410C_AR      :=  aarch64-linux-gnu-ar
+DB410C_LD      :=  aarch64-linux-gnu-g++
+DB410C_GDB     :=  aarch64-linux-gnu-gdb
+DB410C_OBJCOPY :=  aarch64-linux-gnu-obj
+
+#FIXME added toolchains for the HIKEY
+# toolchains for HIKEY
+HIKEY_CXX     :=  aarch64-linux-gnu-g++
+HIKEY_CC      :=  aarch64-linux-gnu-gcc
+HIKEY_AS      :=  aarch64-linux-gnu-gcc
+HIKEY_AR      :=  aarch64-linux-gnu-ar
+HIKEY_LD      :=  aarch64-linux-gnu-g++
+HIKEY_GDB     :=  aarch64-linux-gnu-gdb
+HIKEY_OBJCOPY :=  aarch64-linux-gnu-obj
+
 # toolchains for zynq
 ZYNQ_CXX     :=  arm-xilinx-linux-gnueabi-g++
 ZYNQ_CC      :=  arm-xilinx-linux-gnueabi-gcc
