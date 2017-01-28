@@ -217,6 +217,8 @@ AP_InertialSensor_MPU9250::AP_InertialSensor_MPU9250(AP_InertialSensor &imu,
     , _default_rotation(ROTATION_NONE)
 #elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DARK
     , _default_rotation(ROTATION_NONE)
+#elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DB410C
+    , _default_rotation(ROTATION_NONE)
 #else
     /* rotate for PXF (and default for other boards) */
     , _default_rotation(ROTATION_ROLL_180_YAW_90)
@@ -461,7 +463,10 @@ bool AP_InertialSensor_MPU9250::_hardware_init(void)
     // initially run the bus at low speed
     _dev->set_speed(AP_HAL::Device::SPEED_LOW);
 
+
     uint8_t value = _register_read(MPUREG_WHOAMI);
+    //FIXME: So, it worked a few times. Not sure why it stopped!
+    //uint8_t value = _register_read(0b01110101);
     if (value != MPUREG_WHOAMI_MPU9250 && value != MPUREG_WHOAMI_MPU9255) {
         hal.console->printf("MPU9250: unexpected WHOAMI 0x%x\n", (unsigned)value);
         goto fail_whoami;

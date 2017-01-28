@@ -104,12 +104,12 @@ SPIDesc SPIDeviceManager::_device[] = {
     SPIDesc("ms5611",     2, 1, SPI_MODE_3, 8, SPI_CS_KERNEL,  10*MHZ,10*MHZ),
 };
 //FIXME DB410C INS / COMPASS
-#elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_BBBMINI
+#elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DB410C
 SPIDesc SPIDeviceManager::_device[] = {
     /* MPU9250 is restricted to 1MHz for non-data and interrupt registers */
-    SPIDesc("mpu9250",    2, 0, SPI_MODE_3, 8, SPI_CS_KERNEL,  1*MHZ, 20*MHZ),
-    SPIDesc("mpu9250ext", 1, 0, SPI_MODE_3, 8, SPI_CS_KERNEL,  1*MHZ, 20*MHZ),
-    SPIDesc("ms5611",     2, 1, SPI_MODE_3, 8, SPI_CS_KERNEL,  10*MHZ,10*MHZ),
+    SPIDesc("mpu9250",    0, 0, SPI_MODE_3, 8, 18,  100*KHZ, 100*KHZ),
+    //SPIDesc("mpu9250ext", 1, 0, SPI_MODE_3, 8, 18,  100*KHZ, 100*KHZ),
+    //SPIDesc("ms5611",     2, 1, SPI_MODE_3, 8, SPI_CS_KERNEL,  10*MHZ,10*MHZ),
 };
 
 #elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_RASPILOT

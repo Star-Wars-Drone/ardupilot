@@ -14,7 +14,7 @@
  */
 #include <assert.h>
 #include <utility>
-
+#include <stdlib.h>
 #include <AP_Math/AP_Math.h>
 #include <AP_HAL/AP_HAL.h>
 
@@ -71,6 +71,7 @@ AP_Compass_AK8963::~AP_Compass_AK8963()
 AP_Compass_Backend *AP_Compass_AK8963::probe(Compass &compass,
                                              AP_HAL::OwnPtr<AP_HAL::I2CDevice> dev)
 {
+    hal.console->printf("GENERIC DEVICE PROBING\n");
     AP_AK8963_BusDriver *bus = new AP_AK8963_BusDriver_HALDevice(std::move(dev));
     if (!bus) {
         return nullptr;
@@ -88,6 +89,7 @@ AP_Compass_Backend *AP_Compass_AK8963::probe(Compass &compass,
 AP_Compass_Backend *AP_Compass_AK8963::probe_mpu9250(Compass &compass,
                                                      AP_HAL::OwnPtr<AP_HAL::I2CDevice> dev)
 {
+    hal.console->printf("I2C DEVICE PROBING\n");
     AP_InertialSensor &ins = *AP_InertialSensor::get_instance();
 
     /* Allow MPU9250 to shortcut auxiliary bus and host bus */
@@ -98,16 +100,19 @@ AP_Compass_Backend *AP_Compass_AK8963::probe_mpu9250(Compass &compass,
 
 AP_Compass_Backend *AP_Compass_AK8963::probe_mpu9250(Compass &compass, uint8_t mpu9250_instance)
 {
+    hal.console->printf("SPI DEVICE PROBING\n");
     AP_InertialSensor &ins = *AP_InertialSensor::get_instance();
 
     AP_AK8963_BusDriver *bus =
         new AP_AK8963_BusDriver_Auxiliary(ins, HAL_INS_MPU9250_SPI, mpu9250_instance, AK8963_I2C_ADDR);
     if (!bus) {
+        hal.console->printf("BUS FAIL\n");
         return nullptr;
     }
 
     AP_Compass_AK8963 *sensor = new AP_Compass_AK8963(compass, bus, AP_COMPASS_TYPE_AK8963_MPU9250);
     if (!sensor || !sensor->init()) {
+        hal.console->printf("NO SENSOR: Compass:%d  bus:%d sensor:%d \n", compass, bus, sensor);
         delete sensor;
         return nullptr;
     }
@@ -132,6 +137,7 @@ bool AP_Compass_AK8963::init()
 
     if (!_check_id()) {
         hal.console->printf("AK8963: Wrong id\n");
+
         goto fail;
     }
 
@@ -170,6 +176,7 @@ fail_sem:
     hal.scheduler->resume_timer_procs();
 
     return false;
+    //exit(1);
 }
 
 void AP_Compass_AK8963::read()
@@ -284,8 +291,9 @@ end:
 
 bool AP_Compass_AK8963::_check_id()
 {
+    uint8_t deviceid = 0;
     for (int i = 0; i < 5; i++) {
-        uint8_t deviceid = 0;
+        deviceid = 0;
 
         /* Read AK8963's id */
         if (_bus->register_read(AK8963_WIA, &deviceid) &&

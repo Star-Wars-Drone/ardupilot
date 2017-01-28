@@ -174,7 +174,7 @@ AP_Compass_Backend *AP_Compass_LSM303D::probe(Compass &compass,
 uint8_t AP_Compass_LSM303D::_register_read(uint8_t reg)
 {
     uint8_t val = 0;
-
+    //FIXME Added crazy 1 on the end
     reg |= DIR_READ;
     _dev->read_registers(reg, &val, 1);
 
