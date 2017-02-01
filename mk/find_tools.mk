@@ -64,6 +64,34 @@ DB410C_LD      :=  aarch64-linux-gnu-g++
 DB410C_GDB     :=  aarch64-linux-gnu-gdb
 DB410C_OBJCOPY :=  aarch64-linux-gnu-obj
 
+#FIXME added toolchains for the DB410C Android
+# toolchains for DB410C
+#DB410C_ANDROID_CXX     :=  aarch64-linux-android-4.9-g++
+#DB410C_ANDROID_CC      :=  aarch64-linux-android-4.9-gcc
+#DB410C_ANDROID_AS      :=  aarch64-linux-android-4.9-gnu-gcc
+#DB410C_ANDROID_AR      :=  aarch64-linux-android-4.9-ar
+#DB410C_ANDROID_LD      :=  aarch64-linux-android-4.9-g++
+#DB410C_ANDROID_GDB     :=  aarch64-linux-android-4.9-gdb
+#DB410C_ANDROID_OBJCOPY :=  aarch64-linux-android-4.9-obj
+
+##AArch Android this one?
+#DB410C_ANDROID_CXX     :=  aarch64-linux-android-g++
+#DB410C_ANDROID_CC      :=  aarch64-linux-android-gcc
+#DB410C_ANDROID_AS      :=  aarch64-linux-android-gcc
+#DB410C_ANDROID_AR      :=  aarch64-linux-android-ar
+#DB410C_ANDROID_LD      :=  aarch64-linux-android-g++
+#DB410C_ANDROID_GDB     :=  aarch64-linux-android-gdb
+#DB410C_ANDROID_OBJCOPY :=  aarch64-linux-android-obj
+
+##Arm Andorid this one?
+DB410C_ANDROID_CXX     :=  arm-linux-androideabi-g++
+DB410C_ANDROID_CC      :=  arm-linux-androideabi-gcc
+DB410C_ANDROID_AS      :=  arm-linux-androideabi-gcc
+DB410C_ANDROID_AR      :=  arm-linux-androideabi-ar
+DB410C_ANDROID_LD      :=  arm-linux-androideabi-g++
+DB410C_ANDROID_GDB     :=  arm-linux-androideabi-gdb
+DB410C_ANDROID_OBJCOPY :=  arm-linux-androideabi-obj
+
 #FIXME added toolchains for the HIKEY
 # toolchains for HIKEY
 HIKEY_CXX     :=  aarch64-linux-gnu-g++

@@ -1,0 +1,312 @@
+Default/libraries/AP_HAL_Linux/subdir.mk:../libraries/AP_HAL_Linux/RCInput_SBUS.cpp \
+Default/libraries/AP_HAL_Linux/subdir.mk:./libraries/AP_HAL_Linux/RCInput_SBUS.o \
+Default/libraries/AP_HAL_Linux/subdir.mk:./libraries/AP_HAL_Linux/RCInput_SBUS.d \
+Binary file .git/index matches
+Binary file .git/modules/modules/PX4Firmware/objects/pack/pack-a81a97fcad66a4e3425f0655bb12bccd099139ea.pack matches
+ArduCopter/ReleaseNotes.txt:    e) Futaba SBUS receiver support
+modules/PX4NuttX/nuttx/net/net_internal.h:#define _SS_ISBUSY(s)       (_SS_GETSTATE(s) != _SF_IDLE)
+modules/PX4NuttX/nuttx/arch/arm/src/lpc31xx/lpc31_spi.h:#define SPI_STATUS_SMSBUSY               (1 << 5)  /* Bit 5:  Sequential multi-slave mode busy */
+modules/PX4Firmware/msg/input_rc.msg:uint8 RC_INPUT_SOURCE_PX4IO_SBUS = 4
+modules/PX4Firmware/msg/input_rc.msg:uint8 RC_INPUT_SOURCE_PX4FMU_SBUS = 9
+modules/PX4Firmware/unittests/sbus2_test.cpp:#define SBUS_DEBUG
+modules/PX4Firmware/unittests/sbus2_test.cpp:TEST(SBUS2Test, SBUS2)
+modules/PX4Firmware/unittests/sbus2_test.cpp:	uint8_t frame[SBUS_BUFFER_SIZE];
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:	[PX4IO_P_SETUP_SBUS_RATE]		= 72,
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:#define PX4IO_P_SETUP_FEATURES_VALID	(PX4IO_P_SETUP_FEATURES_SBUS1_OUT | \
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:		PX4IO_P_SETUP_FEATURES_SBUS2_OUT | \
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:#ifdef ENABLE_SBUS_OUT
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:			ENABLE_SBUS_OUT(value & (PX4IO_P_SETUP_FEATURES_SBUS1_OUT | PX4IO_P_SETUP_FEATURES_SBUS2_OUT));
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:			/* disable the conflicting options with SBUS 1 */
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:			if (value & (PX4IO_P_SETUP_FEATURES_SBUS1_OUT)) {
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:					   PX4IO_P_SETUP_FEATURES_SBUS2_OUT);
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:			/* disable the conflicting options with SBUS 2 */
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:			if (value & (PX4IO_P_SETUP_FEATURES_SBUS2_OUT)) {
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:					   PX4IO_P_SETUP_FEATURES_SBUS1_OUT);
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:					   PX4IO_P_SETUP_FEATURES_SBUS1_OUT |
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:					   PX4IO_P_SETUP_FEATURES_SBUS2_OUT);
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:					   PX4IO_P_SETUP_FEATURES_SBUS1_OUT |
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:					   PX4IO_P_SETUP_FEATURES_SBUS2_OUT);
+modules/PX4Firmware/src/modules/px4iofirmware/registers.c:		case PX4IO_P_SETUP_SBUS_RATE:
+modules/PX4Firmware/src/modules/px4iofirmware/protocol.h:#define PX4IO_P_STATUS_FLAGS_RC_SBUS		(1 << 5) /* SBUS input is valid */
+modules/PX4Firmware/src/modules/px4iofirmware/protocol.h:#define PX4IO_P_SETUP_FEATURES_SBUS1_OUT	(1 << 0) /**< enable S.Bus v1 output */
+modules/PX4Firmware/src/modules/px4iofirmware/protocol.h:#define PX4IO_P_SETUP_FEATURES_SBUS2_OUT	(1 << 1) /**< enable S.Bus v2 output */
+modules/PX4Firmware/src/modules/px4iofirmware/protocol.h:#define PX4IO_P_SETUP_SBUS_RATE			19	/* frame rate of SBUS1 output in Hz */
+modules/PX4Firmware/src/modules/px4iofirmware/controls.c:		r_status_flags |= PX4IO_P_STATUS_FLAGS_RC_SBUS;
+modules/PX4Firmware/src/modules/px4iofirmware/controls.c:					  PX4IO_P_STATUS_FLAGS_RC_SBUS);
+modules/PX4Firmware/src/modules/px4iofirmware/mixer.cpp:		if (r_setup_features & PX4IO_P_SETUP_FEATURES_SBUS2_OUT) {
+modules/PX4Firmware/src/modules/px4iofirmware/mixer.cpp:		} else if (r_setup_features & PX4IO_P_SETUP_FEATURES_SBUS1_OUT) {
+modules/PX4Firmware/src/modules/px4iofirmware/mixer.cpp:		if (r_setup_features & PX4IO_P_SETUP_FEATURES_SBUS1_OUT) {
+modules/PX4Firmware/src/modules/px4iofirmware/mixer.cpp:		if (r_setup_features & PX4IO_P_SETUP_FEATURES_SBUS2_OUT) {
+modules/PX4Firmware/src/modules/px4iofirmware/px4io.c:#ifdef ENABLE_SBUS_OUT
+modules/PX4Firmware/src/modules/px4iofirmware/px4io.c:	ENABLE_SBUS_OUT(false);
+modules/PX4Firmware/src/modules/px4iofirmware/px4io.h:#define PX4IO_ACTUATOR_COUNT		16 // this includes all SBUS outputs
+modules/PX4Firmware/src/modules/px4iofirmware/px4io.h:#define r_setup_sbus_rate	r_page_setup[PX4IO_P_SETUP_SBUS_RATE]
+modules/PX4Firmware/src/modules/px4iofirmware/px4io.h:# define ENABLE_SBUS_OUT(_s)		stm32_gpiowrite(GPIO_SBUS_OENABLE, !(_s))
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_START_SYMBOL	0x0f
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_INPUT_CHANNELS	16
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_FLAGS_BYTE		23
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_FAILSAFE_BIT	3
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_FRAMELOST_BIT	2
+modules/PX4Firmware/src/lib/rc/sbus.c:// testing with a SBUS->PWM adapter shows that
+modules/PX4Firmware/src/lib/rc/sbus.c:// above 300Hz SBUS becomes unreliable. 333 would
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS1_MAX_RATE_HZ	300
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS1_MIN_RATE_HZ	50
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS1_DEFAULT_RATE_HZ	72
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_SINGLE_CHAR_LEN_US		(1/((100000/10)) * 1000 * 1000)
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_FRAME_INTERVAL_US	2500
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_MIN_CALL_INTERVAL_US	(SBUS_FRAME_GAP_US / 3)
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_EPSILON_US	2500
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_RANGE_MIN 200.0f
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_RANGE_MAX 1800.0f
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_TARGET_MIN 1000.0f
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_TARGET_MAX 2000.0f
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_SCALE_FACTOR ((SBUS_TARGET_MAX - SBUS_TARGET_MIN) / (SBUS_RANGE_MAX - SBUS_RANGE_MIN))
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS_SCALE_OFFSET (int)(SBUS_TARGET_MIN - (SBUS_SCALE_FACTOR * SBUS_RANGE_MIN + 0.5f))
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS2_FRAME_SIZE_RX_VOLTAGE	3
+modules/PX4Firmware/src/lib/rc/sbus.c:#define SBUS2_FRAME_SIZE_GPS_DIGIT	3
+modules/PX4Firmware/src/lib/rc/sbus.c:static enum SBUS2_DECODE_STATE {
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_DESYNC = 0xFFF,
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_SBUS_START = 0x2FF,
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_SBUS1_SYNC = 0x00,
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_SBUS2_SYNC = 0x1FF,
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_SBUS2_RX_VOLTAGE = 0x04,
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_SBUS2_GPS = 0x14,
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_SBUS2_DATA1 = 0x24,
+modules/PX4Firmware/src/lib/rc/sbus.c:	SBUS2_DECODE_STATE_SBUS2_DATA2 = 0x34
+modules/PX4Firmware/src/lib/rc/sbus.c:} sbus_decode_state = SBUS2_DECODE_STATE_DESYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:static uint8_t	sbus_frame[SBUS_FRAME_SIZE + (SBUS_FRAME_SIZE / 2)];
+modules/PX4Firmware/src/lib/rc/sbus.c:static unsigned sbus1_frame_delay = (1000U * 1000U) / SBUS1_DEFAULT_RATE_HZ;
+modules/PX4Firmware/src/lib/rc/sbus.c:		uint8_t	oframe[SBUS_FRAME_SIZE] = { 0x0f };
+modules/PX4Firmware/src/lib/rc/sbus.c:			value = (uint16_t)(((values[i] - SBUS_SCALE_OFFSET) / SBUS_SCALE_FACTOR) + .5f);
+modules/PX4Firmware/src/lib/rc/sbus.c:		write(sbus_fd, oframe, SBUS_FRAME_SIZE);
+modules/PX4Firmware/src/lib/rc/sbus.c:	uint8_t buf[SBUS_FRAME_SIZE * 2];
+modules/PX4Firmware/src/lib/rc/sbus.c:	ret = read(sbus_fd, &buf[0], SBUS_FRAME_SIZE);
+modules/PX4Firmware/src/lib/rc/sbus.c:			sbus_decode_state = SBUS2_DECODE_STATE_DESYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:			printf("SBUS2: RESET (BUF LIM)\n");
+modules/PX4Firmware/src/lib/rc/sbus.c:		if (partial_frame_count == SBUS_FRAME_SIZE) {
+modules/PX4Firmware/src/lib/rc/sbus.c:			sbus_decode_state = SBUS2_DECODE_STATE_DESYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:			printf("SBUS2: RESET (PACKET LIM)\n");
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:		       (sbus_decode_state == SBUS2_DECODE_STATE_DESYNC) ? "SBUS2_DECODE_STATE_DESYNC" : "",
+modules/PX4Firmware/src/lib/rc/sbus.c:		       (sbus_decode_state == SBUS2_DECODE_STATE_SBUS_START) ? "SBUS2_DECODE_STATE_SBUS_START" : "",
+modules/PX4Firmware/src/lib/rc/sbus.c:		       (sbus_decode_state == SBUS2_DECODE_STATE_SBUS1_SYNC) ? "SBUS2_DECODE_STATE_SBUS1_SYNC" : "",
+modules/PX4Firmware/src/lib/rc/sbus.c:		       (sbus_decode_state == SBUS2_DECODE_STATE_SBUS2_SYNC) ? "SBUS2_DECODE_STATE_SBUS2_SYNC" : "",
+modules/PX4Firmware/src/lib/rc/sbus.c:		       (sbus_decode_state == SBUS2_DECODE_STATE_SBUS2_RX_VOLTAGE) ? "SBUS2_DECODE_STATE_SBUS2_RX_VOLTAGE" : "",
+modules/PX4Firmware/src/lib/rc/sbus.c:		       (sbus_decode_state == SBUS2_DECODE_STATE_SBUS2_GPS) ? "SBUS2_DECODE_STATE_SBUS2_GPS" : "",
+modules/PX4Firmware/src/lib/rc/sbus.c:		case SBUS2_DECODE_STATE_DESYNC:
+modules/PX4Firmware/src/lib/rc/sbus.c:			if (frame[d] == SBUS_START_SYMBOL) {
+modules/PX4Firmware/src/lib/rc/sbus.c:				sbus_decode_state = SBUS2_DECODE_STATE_SBUS_START;
+modules/PX4Firmware/src/lib/rc/sbus.c:		case SBUS2_DECODE_STATE_SBUS_START:
+modules/PX4Firmware/src/lib/rc/sbus.c:		case SBUS2_DECODE_STATE_SBUS1_SYNC:
+modules/PX4Firmware/src/lib/rc/sbus.c:		case SBUS2_DECODE_STATE_SBUS2_SYNC: {
+modules/PX4Firmware/src/lib/rc/sbus.c:				if (partial_frame_count < SBUS_FRAME_SIZE) {
+modules/PX4Firmware/src/lib/rc/sbus.c:				if (!decode_ret && sbus_decode_state == SBUS2_DECODE_STATE_DESYNC) {
+modules/PX4Firmware/src/lib/rc/sbus.c:						if (sbus_frame[i] == SBUS_START_SYMBOL) {
+modules/PX4Firmware/src/lib/rc/sbus.c:						sbus_decode_state = SBUS2_DECODE_STATE_SBUS_START;
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:		case SBUS2_DECODE_STATE_SBUS2_RX_VOLTAGE: {
+modules/PX4Firmware/src/lib/rc/sbus.c:				if (partial_frame_count == 1 && sbus_frame[0] == SBUS_START_SYMBOL) {
+modules/PX4Firmware/src/lib/rc/sbus.c:					sbus_decode_state = SBUS2_DECODE_STATE_SBUS2_SYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:				if (partial_frame_count < SBUS2_FRAME_SIZE_RX_VOLTAGE) {
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:					sbus_decode_state = SBUS2_DECODE_STATE_DESYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:		case SBUS2_DECODE_STATE_SBUS2_GPS: {
+modules/PX4Firmware/src/lib/rc/sbus.c:				if (partial_frame_count == 1 && sbus_frame[0] == SBUS_START_SYMBOL) {
+modules/PX4Firmware/src/lib/rc/sbus.c:					sbus_decode_state = SBUS2_DECODE_STATE_SBUS2_SYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:					sbus_decode_state = SBUS2_DECODE_STATE_DESYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:static const struct sbus_bit_pick sbus_decoder[SBUS_INPUT_CHANNELS][3] = {
+modules/PX4Firmware/src/lib/rc/sbus.c:	if ((frame[0] != SBUS_START_SYMBOL)) {
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:		for (unsigned i = 0; i < SBUS_FRAME_SIZE; i++) {
+modules/PX4Firmware/src/lib/rc/sbus.c:		sbus_decode_state = SBUS2_DECODE_STATE_DESYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:		sbus_decode_state = SBUS2_DECODE_STATE_SBUS1_SYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:		sbus_decode_state = SBUS2_DECODE_STATE_SBUS2_RX_VOLTAGE;
+modules/PX4Firmware/src/lib/rc/sbus.c:		sbus_decode_state = SBUS2_DECODE_STATE_SBUS2_GPS;
+modules/PX4Firmware/src/lib/rc/sbus.c:		/* Unknown SBUS2 data */
+modules/PX4Firmware/src/lib/rc/sbus.c:		sbus_decode_state = SBUS2_DECODE_STATE_SBUS2_SYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:		/* Unknown SBUS2 data */
+modules/PX4Firmware/src/lib/rc/sbus.c:		sbus_decode_state = SBUS2_DECODE_STATE_SBUS2_SYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:#ifdef SBUS_DEBUG
+modules/PX4Firmware/src/lib/rc/sbus.c:		sbus_decode_state = SBUS2_DECODE_STATE_DESYNC;
+modules/PX4Firmware/src/lib/rc/sbus.c:	unsigned chancount = (max_values > SBUS_INPUT_CHANNELS) ?
+modules/PX4Firmware/src/lib/rc/sbus.c:			     SBUS_INPUT_CHANNELS : max_values;
+modules/PX4Firmware/src/lib/rc/sbus.c:		values[channel] = (uint16_t)(value * SBUS_SCALE_FACTOR + .5f) + SBUS_SCALE_OFFSET;
+modules/PX4Firmware/src/lib/rc/sbus.c:		values[16] = (frame[SBUS_FLAGS_BYTE] & (1 << 0)) * 1000 + 998;
+modules/PX4Firmware/src/lib/rc/sbus.c:		values[17] = (frame[SBUS_FLAGS_BYTE] & (1 << 1)) * 1000 + 998;
+modules/PX4Firmware/src/lib/rc/sbus.c:	if (frame[SBUS_FLAGS_BYTE] & (1 << SBUS_FAILSAFE_BIT)) { /* failsafe */
+modules/PX4Firmware/src/lib/rc/sbus.c:	} else if (frame[SBUS_FLAGS_BYTE] & (1 << SBUS_FRAMELOST_BIT)) { /* a frame was lost */
+modules/PX4Firmware/src/lib/rc/sbus.c:  set output rate of SBUS in Hz
+modules/PX4Firmware/src/lib/rc/sbus.c:	if (rate_hz > SBUS1_MAX_RATE_HZ) {
+modules/PX4Firmware/src/lib/rc/sbus.c:		rate_hz = SBUS1_MAX_RATE_HZ;
+modules/PX4Firmware/src/lib/rc/sbus.c:	if (rate_hz < SBUS1_MIN_RATE_HZ) {
+modules/PX4Firmware/src/lib/rc/sbus.c:		rate_hz = SBUS1_MIN_RATE_HZ;
+modules/PX4Firmware/src/lib/rc/sbus.h:#define SBUS_FRAME_SIZE			25
+modules/PX4Firmware/src/lib/rc/sbus.h:#define SBUS_BUFFER_SIZE		(SBUS_FRAME_SIZE + SBUS_FRAME_SIZE / 2)
+modules/PX4Firmware/src/drivers/drv_sbus.h:#ifndef _DRV_SBUS_H
+modules/PX4Firmware/src/drivers/drv_sbus.h:#define _DRV_SBUS_H
+modules/PX4Firmware/src/drivers/drv_sbus.h:#define SBUS0_DEVICE_PATH	"/dev/sbus0"
+modules/PX4Firmware/src/drivers/drv_sbus.h:#define _SBUS_BASE		0x2c00
+modules/PX4Firmware/src/drivers/drv_sbus.h:#define SBUS_SET_PROTO_VERSION		_IOC(_SBUS_BASE, 0)
+modules/PX4Firmware/src/drivers/drv_sbus.h:#endif /* _DRV_SBUS_H */
+modules/PX4Firmware/src/drivers/boards/vrbrain-v52/board_config.h:#define GPIO_SBUS_INV			(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTD|GPIO_PIN7)
+modules/PX4Firmware/src/drivers/boards/vrbrain-v52/board_config.h:#define INVERT_RC_INPUT(_s)		stm32_gpiowrite(GPIO_SBUS_INV, _s);
+modules/PX4Firmware/src/drivers/boards/vrbrain-v52/board_init.c:	stm32_configgpio(GPIO_SBUS_INV);
+modules/PX4Firmware/src/drivers/boards/vrbrain-v51/board_config.h:#define GPIO_SBUS_INV			(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTD|GPIO_PIN7)
+modules/PX4Firmware/src/drivers/boards/vrbrain-v51/board_config.h:#define INVERT_RC_INPUT(_s)		stm32_gpiowrite(GPIO_SBUS_INV, 1-_s);
+modules/PX4Firmware/src/drivers/boards/vrbrain-v51/board_init.c:	stm32_configgpio(GPIO_SBUS_INV);
+modules/PX4Firmware/src/drivers/boards/vrcore-v10/board_config.h:#define GPIO_SBUS_INV			(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTD|GPIO_PIN7)
+modules/PX4Firmware/src/drivers/boards/vrcore-v10/board_config.h:#define INVERT_RC_INPUT(_s)		stm32_gpiowrite(GPIO_SBUS_INV, _s);
+modules/PX4Firmware/src/drivers/boards/vrcore-v10/board_init.c:	stm32_configgpio(GPIO_SBUS_INV);
+modules/PX4Firmware/src/drivers/boards/vrubrain-v52/board_config.h:#define RC_INPUT_SBUS 		4
+modules/PX4Firmware/src/drivers/boards/vrubrain-v52/board_config.h: #define CONFIG_RC_INPUTS  RC_INPUT_PPMSUM + RC_INPUT_SBUS
+modules/PX4Firmware/src/drivers/boards/vrubrain-v52/board_config.h:#if CONFIG_RC_INPUTS_TYPE(RC_INPUT_SBUS)
+modules/PX4Firmware/src/drivers/boards/vrubrain-v52/board_config.h:#define SBUS_COM_PORT "/dev/ttyS3"
+modules/PX4Firmware/src/drivers/boards/vrubrain-v52/board_config.h:/* SBUS **************************/
+modules/PX4Firmware/src/drivers/boards/vrbrain-v54/board_config.h:#define GPIO_SBUS_INV			(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTD|GPIO_PIN7)
+modules/PX4Firmware/src/drivers/boards/vrbrain-v54/board_config.h:#define INVERT_RC_INPUT(_s)		stm32_gpiowrite(GPIO_SBUS_INV, _s);
+modules/PX4Firmware/src/drivers/boards/vrbrain-v54/board_init.c:	stm32_configgpio(GPIO_SBUS_INV);
+modules/PX4Firmware/src/drivers/boards/vrubrain-v51/board_config.h:#define GPIO_SBUS_INV			(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTD|GPIO_PIN7)
+modules/PX4Firmware/src/drivers/boards/vrubrain-v51/board_config.h:#define INVERT_RC_INPUT(_s)		stm32_gpiowrite(GPIO_SBUS_INV, _s);
+modules/PX4Firmware/src/drivers/boards/vrubrain-v51/board_init.c:	stm32_configgpio(GPIO_SBUS_INV);
+modules/PX4Firmware/src/drivers/boards/px4io-v2/board_config.h:/* SBUS pins  *************************************************************/
+modules/PX4Firmware/src/drivers/boards/px4io-v2/board_config.h:#define GPIO_SBUS_INPUT   (GPIO_INPUT|GPIO_CNF_INFLOAT|GPIO_MODE_INPUT|GPIO_PORTB|GPIO_PIN11)
+modules/PX4Firmware/src/drivers/boards/px4io-v2/board_config.h:#define GPIO_SBUS_OUTPUT  (GPIO_OUTPUT|GPIO_CNF_OUTPP|GPIO_MODE_50MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTB|GPIO_PIN10)
+modules/PX4Firmware/src/drivers/boards/px4io-v2/board_config.h:#define GPIO_SBUS_OENABLE (GPIO_OUTPUT|GPIO_CNF_OUTPP|GPIO_MODE_50MHz|GPIO_OUTPUT_SET|GPIO_PORTB|GPIO_PIN4)
+modules/PX4Firmware/src/drivers/boards/px4io-v2/px4io_init.c:	stm32_configgpio(GPIO_SBUS_INPUT); /* xxx alternate function */
+modules/PX4Firmware/src/drivers/boards/px4io-v2/px4io_init.c:	stm32_configgpio(GPIO_SBUS_OUTPUT);
+modules/PX4Firmware/src/drivers/boards/px4io-v2/px4io_init.c:	stm32_gpiowrite(GPIO_SBUS_OENABLE, true);
+modules/PX4Firmware/src/drivers/boards/px4io-v2/px4io_init.c:	stm32_configgpio(GPIO_SBUS_OENABLE);
+modules/PX4Firmware/src/drivers/boards/px4fmu-v4/board_config.h://{0,                      GPIO_SBUS_INV,           0},	https://github.com/PX4/Firmware/blob/master/src/modules/px4iofirmware/sbus.c
+modules/PX4Firmware/src/drivers/boards/px4fmu-v4/board_config.h:#define GPIO_SBUS_INV			(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTC|GPIO_PIN13)
+modules/PX4Firmware/src/drivers/boards/px4fmu-v4/board_config.h:#define INVERT_RC_INPUT(_s)		stm32_gpiowrite(GPIO_SBUS_INV, 1-_s);
+modules/PX4Firmware/src/drivers/boards/px4fmu-v4/board_config.h:#define GPIO_SBUS_INV			(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_SET|GPIO_PORTC|GPIO_PIN13)
+modules/PX4Firmware/src/drivers/boards/px4fmu-v4/board_config.h:#define INVERT_RC_INPUT(_s)		stm32_gpiowrite(GPIO_SBUS_INV, _s);
+modules/PX4Firmware/src/drivers/boards/px4fmu-v4/px4fmu_init.c:	stm32_configgpio(GPIO_SBUS_INV);
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:		RC_SCAN_SBUS,
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:	enum RC_SCAN _rc_scan_state = RC_SCAN_SBUS;
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:		"SBUS",
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:	// frame detection for non-CRC protocols like SBUS and DSM
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:#ifdef GPIO_SBUS_INV
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:	// this board has a GPIO to control SBUS inversion
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:	stm32_configgpio(GPIO_SBUS_INV);
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:		// assume SBUS input
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:	case RC_SCAN_SBUS:
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:			// Configure serial port for SBUS
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:			if (newBytes > 0 && newBytes <= SBUS_FRAME_SIZE) {
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:					// we have a new SBUS frame. Publish it.
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:					_rc_in.input_source = input_rc_s::RC_INPUT_SOURCE_PX4FMU_SBUS;
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:			set_rc_scan_state(RC_SCAN_SBUS);
+modules/PX4Firmware/src/drivers/px4fmu/fmu.cpp:		set_rc_scan_state(RC_SCAN_SBUS);
+modules/PX4Firmware/src/drivers/drv_pwm_output.h:/** set SBUS output frame rate in Hz */
+modules/PX4Firmware/src/drivers/drv_pwm_output.h:#define PWM_SERVO_SET_SBUS_RATE			_PX4_IOC(_PWM_SERVO_BASE, 31)
+modules/PX4Firmware/src/drivers/px4io/px4io_params.c:PARAM_DEFINE_INT32(PWM_SBUS_MODE, 0);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:				parm_handle = param_find("PWM_SBUS_MODE");
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:						(void)io_reg_modify(PX4IO_PAGE_SETUP, PX4IO_P_SETUP_FEATURES, 0, PX4IO_P_SETUP_FEATURES_SBUS1_OUT);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:						(void)io_reg_modify(PX4IO_PAGE_SETUP, PX4IO_P_SETUP_FEATURES, 0, PX4IO_P_SETUP_FEATURES_SBUS2_OUT);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:								    (PX4IO_P_SETUP_FEATURES_SBUS1_OUT | PX4IO_P_SETUP_FEATURES_SBUS2_OUT), 0);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:	} else if (_status & PX4IO_P_STATUS_FLAGS_RC_SBUS) {
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:		rc_val.input_source = input_rc_s::RC_INPUT_SOURCE_PX4IO_SBUS;
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:	       ((flags & PX4IO_P_STATUS_FLAGS_RC_SBUS)  ? " SBUS" : ""),
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:	       ((features & PX4IO_P_SETUP_FEATURES_SBUS1_OUT) ? " S.BUS1_OUT" : ""),
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:	       ((features & PX4IO_P_SETUP_FEATURES_SBUS2_OUT) ? " S.BUS2_OUT" : ""),
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:	       io_reg_get(PX4IO_PAGE_SETUP, PX4IO_P_SETUP_SBUS_RATE),
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:	case PWM_SERVO_SET_SBUS_RATE:
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:		/* set the requested SBUS frame rate */
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:		ret = io_reg_set(PX4IO_PAGE_SETUP, PX4IO_P_SETUP_SBUS_RATE, arg);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:			} else if (status & PX4IO_P_STATUS_FLAGS_RC_SBUS) {
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:				rc_val->input_source = input_rc_s::RC_INPUT_SOURCE_PX4IO_SBUS;
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:	case SBUS_SET_PROTO_VERSION:
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:			ret = io_reg_modify(PX4IO_PAGE_SETUP, PX4IO_P_SETUP_FEATURES, 0, PX4IO_P_SETUP_FEATURES_SBUS1_OUT);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:			ret = io_reg_modify(PX4IO_PAGE_SETUP, PX4IO_P_SETUP_FEATURES, 0, PX4IO_P_SETUP_FEATURES_SBUS2_OUT);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:					    (PX4IO_P_SETUP_FEATURES_SBUS1_OUT | PX4IO_P_SETUP_FEATURES_SBUS2_OUT), 0);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:		int ret = g_dev->ioctl(nullptr, SBUS_SET_PROTO_VERSION, 1);
+modules/PX4Firmware/src/drivers/px4io/px4io.cpp:		int ret = g_dev->ioctl(nullptr, SBUS_SET_PROTO_VERSION, 2);
+Tools/Linux_HAL_Essentials/devicetree/pxf/BB-PXF-01-00A0.dts:		"P8.15",	/* pru0: pr1_pru0_pru_r31_15, PPM-sum, SBUS, DSM */
+Tools/Linux_HAL_Essentials/devicetree/pxf/BB-PXF-01-00A0.dts:					0x03c 0x2e	/* gpmc_ad15.pr1_pru0_pru_r31_15, MODE6 | INPUT | PRU, PPM-sum, SBUS, DSM  */
+Tools/Linux_HAL_Essentials/devicetree/pxf/BB-BONE-PRU-05-00A0.dts:		"P8.15",	/* pru0: pr1_pru0_pru_r30_15, PPM-sum, SBUS, DSM */
+Tools/Linux_HAL_Essentials/devicetree/pxf/BB-BONE-PRU-05-00A0.dts:					0x03c 0x2E	/* gpmc_ad13.pr1_pru0_pru_r30_15, MODE6 | INPUT | PRU, PPM-sum, SBUS, DSM */
+Tools/Linux_HAL_Essentials/devicetree/bbbmini/BB-BBBMINI-00A0.dts:        "P8.15",	/* pru1: pr1_ecap0_ecap_capin, PPM-sum, SBUS, DSM */
+Tools/Linux_HAL_Essentials/devicetree/bbbmini/BB-BBBMINI-00A0.dts:                    0x03c 0x35	/* ecap0_in_pwm0_out.pr1_ecap0_ecap_capin, MODE5 | INPUT_PULLUP | PRU, PPM-sum, SBUS, DSM  */
+ArduPlane/release-notes.txt: - support up to 16 output channels (two via SBUS output only)
+ArduPlane/release-notes.txt: - support up to 16 output channels (two via SBUS output only)
+ArduPlane/release-notes.txt: - new BRD_SBUS_OUT parameter to enable SBUS output on Pixhawk
+ArduPlane/release-notes.txt:  - added SBUS FrSky telemetry support (thanks to Mathias)
+libraries/AP_BattMonitor/AP_BattMonitor_SMBus_I2C.h:#define BATTMONITOR_SBUS_I2C_BUS 1
+libraries/AP_BattMonitor/AP_BattMonitor.cpp:                                                                 hal.i2c_mgr->get_device(BATTMONITOR_SBUS_I2C_BUS, BATTMONITOR_SMBUS_I2C_ADDR));
+libraries/AP_HAL/RCOutput.h:      enable SBUS out at the given rate
+libraries/AP_RSSI/AP_RSSI.cpp:    // @Values: 0:APM2 A0,1:APM2 A1,13:APM2 A13,11:Pixracer,13:Pixhawk ADC4,14:Pixhawk ADC3,15: Pixhawk ADC6,103:Pixhawk SBUS
+libraries/AP_HAL_Linux/RCInput.cpp:      to decode SBUS on the same pin, as SBUS will have a maximum
+libraries/AP_HAL_Linux/RCInput.cpp:  process a SBUS input pulse of the given width
+libraries/AP_HAL_Linux/RCInput.cpp:    // treat as SBUS
+libraries/AP_HAL_Linux/RCInput.cpp:  add some bytes of input in SBUS serial stream format, coping with partial packets
+libraries/AP_HAL_Linux/RCInput.cpp:                  the apparent number of channels can change on SBUS,
+libraries/AP_HAL_Linux/RCInput.cpp:                printf("Decoded SBUS %u channels %u %u %u %u %u %u %u %u %s\n",
+libraries/AP_HAL_Linux/sbus.cpp:  SBUS decoder, based on src/modules/px4iofirmware/sbus.c from PX4Firmware
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_FRAME_SIZE		25
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_INPUT_CHANNELS	16
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_FLAGS_BYTE		23
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_FAILSAFE_BIT	3
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_FRAMELOST_BIT	2
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_RANGE_MIN 200.0f
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_RANGE_MAX 1800.0f
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_TARGET_MIN 1000.0f
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_TARGET_MAX 2000.0f
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_SCALE_FACTOR ((SBUS_TARGET_MAX - SBUS_TARGET_MIN) / (SBUS_RANGE_MAX - SBUS_RANGE_MIN))
+libraries/AP_HAL_Linux/sbus.cpp:#define SBUS_SCALE_OFFSET (int)(SBUS_TARGET_MIN - (SBUS_SCALE_FACTOR * SBUS_RANGE_MIN + 0.5f))
+libraries/AP_HAL_Linux/sbus.cpp:static const struct sbus_bit_pick sbus_decoder[SBUS_INPUT_CHANNELS][3] = {
+libraries/AP_HAL_Linux/sbus.cpp:	unsigned chancount = (max_values > SBUS_INPUT_CHANNELS) ?
+libraries/AP_HAL_Linux/sbus.cpp:			     SBUS_INPUT_CHANNELS : max_values;
+libraries/AP_HAL_Linux/sbus.cpp:		values[channel] = (uint16_t)(value * SBUS_SCALE_FACTOR +.5f) + SBUS_SCALE_OFFSET;
+libraries/AP_HAL_Linux/sbus.cpp:		values[16] = (frame[SBUS_FLAGS_BYTE] & (1 << 0)) * 1000 + 998;
+libraries/AP_HAL_Linux/sbus.cpp:		values[17] = (frame[SBUS_FLAGS_BYTE] & (1 << 1)) * 1000 + 998;
+libraries/AP_HAL_Linux/sbus.cpp:	if (frame[SBUS_FLAGS_BYTE] & (1 << SBUS_FAILSAFE_BIT)) { /* failsafe */
+libraries/AP_HAL_Linux/sbus.cpp:	else if (frame[SBUS_FLAGS_BYTE] & (1 << SBUS_FRAMELOST_BIT)) { /* a frame was lost */
+libraries/AP_HAL_Linux/RCInput_SBUS.h:class RCInput_SBUS : public RCInput
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:  this is a driver for SBUS input in Linux board using a UART. Note
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#include "RCInput_SBUS.h"
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#define SBUS_FRAME_SIZE 25
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:void RCInput_SBUS::init()
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:        printf("Opened SBUS input %s fd=%d\n", device_path, (int)fd);
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:        tio.c_cc[VMIN] = SBUS_FRAME_SIZE;
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:void RCInput_SBUS::set_device_path(const char *path)
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    printf("Set SBUS device path %s\n", path);
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#define SBUS_DEBUG_LOG 0
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#define SBUS_CAUSE_CORRUPTION 0
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:void RCInput_SBUS::_timer_tick(void)
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    uint8_t bytes[SBUS_FRAME_SIZE*10];
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    // as VMIN is SBUS_FRAME_SIZE the select won't return unless there is
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    // at least SBUS_FRAME_SIZE bytes available
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#if SBUS_DEBUG_LOG
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#if SBUS_CAUSE_CORRUPTION
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    if (nread % SBUS_FRAME_SIZE != 0) {
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:          SBUS frames are 25 bytes long, and always start with
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:          3.5ms. If SBUS is run at very high rate (like 300Hz)
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    if (nread % SBUS_FRAME_SIZE != 0) {
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#if SBUS_DEBUG_LOG
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:#if SBUS_DEBUG_LOG
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    // only process the last SBUS_FRAME_SIZE bytes. Only the latest
+libraries/AP_HAL_Linux/RCInput_SBUS.cpp:    add_sbus_input(&bytes[nread-SBUS_FRAME_SIZE], SBUS_FRAME_SIZE);
+libraries/AP_HAL_Linux/px4io_protocol.h:#define PX4IO_P_STATUS_FLAGS_RC_SBUS		(1 << 5) /* SBUS input is valid */
+libraries/AP_HAL_Linux/px4io_protocol.h:#define PX4IO_P_SETUP_FEATURES_SBUS1_OUT	(1 << 0) /**< enable S.Bus v1 output */
+libraries/AP_HAL_Linux/px4io_protocol.h:#define PX4IO_P_SETUP_FEATURES_SBUS2_OUT	(1 << 1) /**< enable S.Bus v2 output */
+libraries/AP_HAL_Linux/HAL_Linux_Class.cpp:#include "RCInput_SBUS.h"
+libraries/AP_HAL_Linux/HAL_Linux_Class.cpp:static RCInput_Multi rcinDriver{2, new RCInput_SBUS, new RCInput_115200("/dev/uart-sumd")};
+libraries/AP_HAL_Linux/HAL_Linux_Class.cpp:static RCInput_SBUS rcinDriver;
+libraries/AP_HAL_Linux/RCInput.h:    // add some SBUS input bytes, for RCInput over a serial port
+libraries/AP_HAL_Linux/RCInput.h:    // state of SBUS bit decoder
+libraries/AP_HAL_VRBRAIN/RCOutput.cpp:        if (ioctl(fd, SBUS_SET_PROTO_VERSION, 1) != 0) {
+libraries/AP_HAL_VRBRAIN/RCOutput.cpp:        if (ioctl(fd, PWM_SERVO_SET_SBUS_RATE, rate_hz) != 0) {
+libraries/AP_HAL_PX4/RCOutput.cpp:        if (ioctl(fd, SBUS_SET_PROTO_VERSION, 1) != 0) {
+libraries/AP_HAL_PX4/RCOutput.cpp:        if (ioctl(fd, PWM_SERVO_SET_SBUS_RATE, rate_hz) != 0) {
+libraries/AP_BoardConfig/AP_BoardConfig.cpp:    // @Param: SBUS_OUT
+libraries/AP_BoardConfig/AP_BoardConfig.cpp:    // @DisplayName:  SBUS output rate
+libraries/AP_BoardConfig/AP_BoardConfig.cpp:    // @Description: This sets the SBUS output frame rate in Hz
+libraries/AP_BoardConfig/AP_BoardConfig.cpp:    AP_GROUPINFO("SBUS_OUT",   4, AP_BoardConfig, px4.sbus_out_rate, 0),
+libraries/AP_BoardConfig/px4_drivers.cpp:  setup SBUS
+libraries/AP_BoardConfig/px4_drivers.cpp:            hal.console->printf("Failed to enable SBUS out\n");
+APMrover2/release-notes.txt:  - added SBUS FrSky telemetry support (thanks to Mathias)

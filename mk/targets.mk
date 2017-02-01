@@ -62,17 +62,23 @@ raspilot: TOOLCHAIN = RPI
 raspilot: BUILDSYS_DEPRECATED = 1
 raspilot: all
 
-#FIXME Added DB 410C tool chain
+#FIXME Added DB410C tool chain
 db410c: HAL_BOARD = HAL_BOARD_LINUX
 db410c: TOOLCHAIN = DB410C
 db410c: BUILDSYS_DEPRECATED = 1
 db410c: all
 
-#FIXME Added DB 410C tool chain
+#FIXME Added HIKEY tool chain
 hikey: HAL_BOARD = HAL_BOARD_LINUX
 hikey: TOOLCHAIN = HIKEY
 hikey: BUILDSYS_DEPRECATED = 1
 hikey: all
+
+#FIXME Added DB410C Android tool chain
+db410c_android: HAL_BOARD = HAL_BOARD_LINUX
+db410c_android: TOOLCHAIN = DB410C_ANDROID
+db410c_android: BUILDSYS_DEPRECATED = 1
+db410c_android: all
 
 erlebrain2: HAL_BOARD = HAL_BOARD_LINUX
 erlebrain2: TOOLCHAIN = RPI

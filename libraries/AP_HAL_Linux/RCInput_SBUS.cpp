@@ -21,7 +21,8 @@
 #include <AP_HAL/AP_HAL.h>
 
 #if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DISCO || \
-    CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_AERO
+    CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_AERO || \
+    CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DB410C
 #include "RCInput_SBUS.h"
 #include <stdio.h>
 #include <fcntl.h>
@@ -73,7 +74,8 @@ void RCInput_SBUS::init()
 void RCInput_SBUS::set_device_path(const char *path)
 {
     device_path = path;
-    printf("Set SBUS device path %s\n", path);
+    //hal.console->printf("\n\n\n######################Set SBUS device path %s########################\n\n\n\n", path);
+    printf("\n\n\n######################Set SBUS device path %s########################\n\n\n\n", path);
 }
 
 #define SBUS_DEBUG_LOG 0

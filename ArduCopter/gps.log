@@ -1,0 +1,269 @@
+commands_logic.cpp:            DataFlash.Log_Write_Camera(ahrs, gps, current_loc);
+commands_logic.cpp:            DataFlash.Log_Write_Trigger(ahrs, gps, current_loc);
+control_poshold.cpp:    // fail to initialise PosHold mode if no GPS lock
+GCS_Mavlink.cpp:    if (gps.status() > AP_GPS::NO_GPS) {
+GCS_Mavlink.cpp:        control_sensors_present |= MAV_SYS_STATUS_SENSOR_GPS;
+GCS_Mavlink.cpp:    case GUIDED_NOGPS:
+GCS_Mavlink.cpp:    if (gps.status() == AP_GPS::NO_GPS) {
+GCS_Mavlink.cpp:        control_sensors_health &= ~MAV_SYS_STATUS_SENSOR_GPS;
+GCS_Mavlink.cpp:    // if we have a GPS fix, take the time as the last fix time. That
+GCS_Mavlink.cpp:    // If we don't have a GPS fix then we are dead reckoning, and will
+GCS_Mavlink.cpp:    if (gps.status() >= AP_GPS::GPS_OK_FIX_2D) {
+GCS_Mavlink.cpp:        fix_time = gps.last_fix_time_ms();
+GCS_Mavlink.cpp:        gps.ground_speed(),
+GCS_Mavlink.cpp:        gps.ground_speed(),
+GCS_Mavlink.cpp:    case MSG_GPS_RAW:
+GCS_Mavlink.cpp:        return send_gps_raw(copter.gps);
+GCS_Mavlink.cpp:        send_system_time(copter.gps);
+GCS_Mavlink.cpp:        copter.camera.send_feedback(chan, copter.gps, copter.ahrs, copter.current_loc);
+GCS_Mavlink.cpp:    // @Description: Stream rate of SYS_STATUS, MEMINFO, MISSION_CURRENT, GPS_RAW_INT, NAV_CONTROLLER_OUTPUT, and LIMITS_STATUS to ground station
+GCS_Mavlink.cpp:        send_message(MSG_GPS_RAW);
+GCS_Mavlink.cpp:                    bool shot_mode = (!is_zero(packet.param1) && (copter.control_mode == GUIDED || copter.control_mode == GUIDED_NOGPS));
+GCS_Mavlink.cpp:        if ((copter.control_mode != GUIDED) && (copter.control_mode != GUIDED_NOGPS) && !(copter.control_mode == AUTO && copter.auto_mode == Auto_NavGuided)) {
+GCS_Mavlink.cpp:    case MAVLINK_MSG_ID_GPS_RTCM_DATA:
+GCS_Mavlink.cpp:    case MAVLINK_MSG_ID_GPS_INPUT:
+GCS_Mavlink.cpp:      copter.gps.handle_msg(msg);
+GCS_Mavlink.cpp:        // set gps hil sensor
+GCS_Mavlink.cpp:        gps.setHIL(0, AP_GPS::GPS_OK_FIX_3D,
+GCS_Mavlink.cpp:        handle_serial_control(msg, copter.gps);
+GCS_Mavlink.cpp:    case MAVLINK_MSG_ID_GPS_INJECT_DATA:
+GCS_Mavlink.cpp:        handle_gps_inject(msg, copter.gps);
+flight_mode.cpp:        case GUIDED_NOGPS:
+flight_mode.cpp:            success = guided_nogps_init(ignore_checks);
+flight_mode.cpp:        // this flight mode change could be automatic (i.e. fence, battery, GPS or GCS failsafe)
+flight_mode.cpp:        case GUIDED_NOGPS:
+flight_mode.cpp:            guided_nogps_run();
+flight_mode.cpp:// returns true or false whether mode requires GPS
+flight_mode.cpp:bool Copter::mode_requires_GPS(control_mode_t mode)
+flight_mode.cpp:    if (mode_has_manual_throttle(mode) || mode == LOITER || mode == ALT_HOLD || mode == POSHOLD || mode == DRIFT || mode == SPORT || mode == THROW || (arming_from_gcs && (mode == GUIDED || mode == GUIDED_NOGPS))) {
+flight_mode.cpp:        case GUIDED_NOGPS:
+flight_mode.cpp:    case GUIDED_NOGPS:
+flight_mode.cpp:        port->print("GUIDED_NOGPS");
+heli.cpp:    // with GPS lock use inertial nav to determine if we are moving
+heli.cpp:        // with no GPS lock base it on throttle and forward lean angle
+motor_test.cpp:            // disable throttle, battery and gps failsafe
+afs_copter.h:    AP_AdvancedFailsafe_Copter(AP_Mission &_mission, AP_Baro &_baro, const AP_GPS &_gps, const RCMapper &_rcmap);
+Binary file ArduCopter.elf matches
+tuning.cpp:            ahrs.get_NavEKF()._gpsVertPosNoise = tuning_value;
+tuning.cpp:            ahrs.get_NavEKF2()._gpsVertPosNoise = tuning_value;
+tuning.cpp:        // EKF's gps vs accel (higher rely on accels more, gps impact is reduced)
+tuning.cpp:            ahrs.get_NavEKF()._gpsHorizPosNoise = tuning_value;
+tuning.cpp:            ahrs.get_NavEKF2()._gpsHorizPosNoise = tuning_value;
+tuning.cpp:        // EKF's accel noise (lower means trust accels more, gps & baro less)
+control_guided_nogps.cpp: * Init and run calls for guided_nogps flight mode
+control_guided_nogps.cpp:// initialise guided_nogps controller
+control_guided_nogps.cpp:bool Copter::guided_nogps_init(bool ignore_checks)
+control_guided_nogps.cpp:void Copter::guided_nogps_run()
+defines.h:    BRAKE =        17,  // full-brake using inertial/GPS system, no pilot input
+defines.h:    THROW =        18,  // throw to launch mode using inertial/GPS system, no pilot input
+defines.h:    GUIDED_NOGPS = 20,  // guided mode but only accepts attitude and altitude
+defines.h:    MODE_REASON_GPS_GLITCH,
+defines.h:    TUNING_EKF_HORIZONTAL_POS =         43, // EKF's gps vs accel (higher rely on accels more, gps impact is reduced).  Range should be 1.0 ~ 3.0?  1.5 is default
+defines.h:    TUNING_EKF_ACCEL_NOISE =            44, // EKF's accel noise (lower means trust accels more, gps & baro less).  Range should be 0.02 ~ 0.5  0.5 is default (but very robust at that level)
+defines.h:#define MASK_LOG_GPS                    (1<<2)
+defines.h:#define DATA_LOST_GPS                       19
+defines.h:#define ERROR_SUBSYSTEM_FAILSAFE_GPS        7   // not used
+defines.h:#define ERROR_SUBSYSTEM_GPS                 11  // not used
+defines.h:// subsystem specific error codes -- failsafe_thr, batt, gps
+defines.h:#define ARMING_CHECK_GPS                    0x08
+Parameters.h:        // GPS object
+Parameters.h:        k_param_gps,
+Parameters.h:        k_param_gps_hdop_good,
+Parameters.h:        k_param_gpslock_limit,          // deprecated - remove
+Parameters.h:        k_param_gps_glitch,             // deprecated
+Parameters.h:        k_param_failsafe_gps_enabled,   // remove
+Parameters.h:    AP_Int16        gps_hdop_good;              // GPS Hdop value at or below this value represent a good position
+Log.cpp:        PLOG(GPS);
+Log.cpp:        TARG(GPS);
+commands.cpp: *   HOME_UNSET             = home is not set, no GPS positions yet received
+commands.cpp:// set_home_to_current_location_inflight - set home to current GPS location (horizontally) and EKF origin vertically
+commands.cpp:// set_home_to_current_location - set home to current GPS location
+commands.cpp:            compass.set_initial_location(gps.location().lat, gps.location().lng);
+commands.cpp:// checks if we should update ahrs/RTL home position from GPS
+commands.cpp:void Copter::set_system_time_from_GPS()
+commands.cpp:    if (gps.status() >= AP_GPS::GPS_OK_FIX_3D) {
+commands.cpp:        uint64_t gps_timestamp = gps.time_epoch_usec();
+commands.cpp:        hal.util->set_system_clock(gps_timestamp);
+commands.cpp:        GCS_MAVLINK::update_signing_timestamp(gps_timestamp);
+afs_copter.cpp:AP_AdvancedFailsafe_Copter::AP_AdvancedFailsafe_Copter(AP_Mission &_mission, AP_Baro &_baro, const AP_GPS &_gps, const RCMapper &_rcmap) :
+afs_copter.cpp:    AP_AdvancedFailsafe(_mission, _baro, _gps, _rcmap)
+make.inc:LIBRARIES += AP_GPS
+Parameters.cpp:    // @Param: GPS_HDOP_GOOD
+Parameters.cpp:    // @DisplayName: GPS Hdop Good
+Parameters.cpp:    // @Description: GPS Hdop value at or below this value represent a good position.  Used for pre-arm checks
+Parameters.cpp:    GSCALAR(gps_hdop_good, "GPS_HDOP_GOOD", GPS_HDOP_GOOD_DEFAULT),
+Parameters.cpp:    // @Values: 0:Never change yaw, 1:Face next waypoint, 2:Face next waypoint except RTL, 3:Face along GPS course
+Parameters.cpp:    // @Values: 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,11:Drift,13:Sport,14:Flip,15:AutoTune,16:PosHold,17:Brake,18:Throw,19:Avoid_ADSB,20:Guided_NoGPS
+Parameters.cpp:    // @Values: 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,11:Drift,13:Sport,14:Flip,15:AutoTune,16:PosHold,17:Brake,18:Throw,19:Avoid_ADSB,20:Guided_NoGPS
+Parameters.cpp:    // @Values: 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,11:Drift,13:Sport,14:Flip,15:AutoTune,16:PosHold,17:Brake,18:Throw,19:Avoid_ADSB,20:Guided_NoGPS
+Parameters.cpp:    // @Values: 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,11:Drift,13:Sport,14:Flip,15:AutoTune,16:PosHold,17:Brake,18:Throw,19:Avoid_ADSB,20:Guided_NoGPS
+Parameters.cpp:    // @Values: 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,11:Drift,13:Sport,14:Flip,15:AutoTune,16:PosHold,17:Brake,18:Throw,19:Avoid_ADSB,20:Guided_NoGPS
+Parameters.cpp:    // @Values: 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,11:Drift,13:Sport,14:Flip,15:AutoTune,16:PosHold,17:Brake,18:Throw,19:Avoid_ADSB,20:Guided_NoGPS
+Parameters.cpp:    // @Bitmask: 0:ATTITUDE_FAST,1:ATTITUDE_MED,2:GPS,3:PM,4:CTUN,5:NTUN,6:RCIN,7:IMU,8:CMD,9:CURRENT,10:RCOUT,11:OPTFLOW,12:PID,13:COMPASS,14:INAV,15:CAMERA,17:MOTBATT,18:IMU_FAST,19:IMU_RAW
+Parameters.cpp:    // @Description: Allows enabling or disabling of pre-arming checks of receiver, accelerometer, barometer, compass and GPS
+Parameters.cpp:    // @Values: 0:Disabled, 1:Enabled, -3:Skip Baro, -5:Skip Compass, -9:Skip GPS, -17:Skip INS, -33:Skip Params/Rangefinder, -65:Skip RC, 127:Skip Voltage
+Parameters.cpp:    // @Bitmask: 0:All,1:Baro,2:Compass,3:GPS,4:INS,5:Parameters+Rangefinder,6:RC,7:Voltage
+Parameters.cpp:    // GPS driver
+Parameters.cpp:    // @Group: GPS_
+Parameters.cpp:    // @Path: ../libraries/AP_GPS/AP_GPS.cpp
+Parameters.cpp:    GOBJECT(gps, "GPS_", AP_GPS),
+Parameters.cpp:     ,afs(copter.mission, copter.barometer, copter.gps, copter.rcmap)
+arming_checks.cpp:        // run gps checks because results may change and affect LED colour
+arming_checks.cpp:        pre_arm_gps_checks(false);
+arming_checks.cpp:        & gps_checks(display_failure)
+arming_checks.cpp:bool Copter::gps_checks(bool display_failure)
+arming_checks.cpp:    // check GPS
+arming_checks.cpp:    if (!pre_arm_gps_checks(display_failure)) {
+arming_checks.cpp:// performs pre_arm gps related checks and returns true if passed
+arming_checks.cpp:bool Copter::pre_arm_gps_checks(bool display_failure)
+arming_checks.cpp:    // check if flight mode requires GPS
+arming_checks.cpp:    bool gps_required = mode_requires_GPS(control_mode);
+arming_checks.cpp:    // if circular fence is enabled we need GPS
+arming_checks.cpp:        gps_required = true;
+arming_checks.cpp:    // return true if GPS is not required
+arming_checks.cpp:    if (!gps_required) {
+arming_checks.cpp:        AP_Notify::flags.pre_arm_gps_check = true;
+arming_checks.cpp:    // ensure GPS is ok
+arming_checks.cpp:        AP_Notify::flags.pre_arm_gps_check = false;
+arming_checks.cpp:        AP_Notify::flags.pre_arm_gps_check = false;
+arming_checks.cpp:    // return true immediately if gps check is disabled
+arming_checks.cpp:    if (!(g.arming_check == ARMING_CHECK_ALL || g.arming_check & ARMING_CHECK_GPS)) {
+arming_checks.cpp:        AP_Notify::flags.pre_arm_gps_check = true;
+arming_checks.cpp:    // check GPS configuration has completed
+arming_checks.cpp:    uint8_t first_unconfigured = gps.first_unconfigured_gps();
+arming_checks.cpp:    if (first_unconfigured != AP_GPS::GPS_ALL_CONFIGURED) {
+arming_checks.cpp:                                             "PreArm: GPS %d failing configuration checks",
+arming_checks.cpp:            gps.broadcast_first_configuration_failure_reason();
+arming_checks.cpp:    // warn about hdop separately - to prevent user confusion with no gps lock
+arming_checks.cpp:    if (gps.get_hdop() > g.gps_hdop_good) {
+arming_checks.cpp:            gcs_send_text(MAV_SEVERITY_CRITICAL,"PreArm: High GPS HDOP");
+arming_checks.cpp:        AP_Notify::flags.pre_arm_gps_check = false;
+arming_checks.cpp:    AP_Notify::flags.pre_arm_gps_check = true;
+arming_checks.cpp:    // always check gps
+arming_checks.cpp:    if (!pre_arm_gps_checks(display_failure)) {
+arming_checks.cpp:        if (!(arming_from_gcs && (control_mode == GUIDED || control_mode == GUIDED_NOGPS))) {
+config.h:// prearm GPS hdop check
+config.h:#ifndef GPS_HDOP_GOOD_DEFAULT
+config.h: # define GPS_HDOP_GOOD_DEFAULT         140     // minimum hdop that represents a good position.  used during pre-arm checks if fence is enabled
+config.h:    MASK_LOG_GPS | \
+control_land.cpp:static bool land_with_gps;
+control_land.cpp:    // check if we have GPS and decide which LAND we're going to do
+control_land.cpp:    land_with_gps = position_ok();
+control_land.cpp:    if (land_with_gps) {
+control_land.cpp:    if (land_with_gps) {
+control_land.cpp:        land_gps_run();
+control_land.cpp:        land_nogps_run();
+control_land.cpp:void Copter::land_gps_run()
+control_land.cpp:// land_nogps_run - runs the land controller
+control_land.cpp:void Copter::land_nogps_run()
+control_land.cpp:// land_do_not_use_GPS - forces land-mode to not use the GPS but instead rely on pilot input for roll and pitch
+control_land.cpp://  called during GPS failsafe to ensure that if we were already in LAND mode that we do not use the GPS
+control_land.cpp:void Copter::land_do_not_use_GPS()
+control_land.cpp:    land_with_gps = false;
+control_land.cpp:// landing_with_GPS - returns true if vehicle is landing using GPS
+control_land.cpp:bool Copter::landing_with_GPS() {
+control_land.cpp:    return (control_mode == LAND && land_with_gps);
+events.cpp:    bool valid_mode = (control_mode == AUTO || control_mode == GUIDED || control_mode == GUIDED_NOGPS || control_mode == RTL);
+control_auto.cpp://  we assume the caller has performed all required GPS_ok checks
+control_auto.cpp:    // return failure if GPS is bad
+control_auto.cpp:        if (camera_mount.get_mode() == MAV_MOUNT_MODE_GPS_POINT) {
+motors.cpp:    // enable gps velocity based centrefugal force compensation
+motors.cpp:    // disable gps velocity based centrefugal force compensation
+ekf_check.cpp:    // do nothing if not in GPS flight mode and ekf-action is not land-even-stabilize
+ekf_check.cpp:    if ((control_mode != LAND) && !mode_requires_GPS(control_mode) && (g.fs_ekf_action != FS_EKF_ACTION_LAND_EVEN_STABILIZE)) {
+ekf_check.cpp:    // if flight mode is already LAND ensure it's not the GPS controlled LAND
+ekf_check.cpp:        land_do_not_use_GPS();
+AP_State.cpp:// home_is_set - returns true if home positions has been set (to GPS location, armed location or EKF origin)
+ReleaseNotes.txt:    c) SBF GPS altitude and accuracy reporting fix 
+ReleaseNotes.txt:    d) MAV GPS uses existing configured baud rate instead of auto detecting 
+ReleaseNotes.txt:    c) EKF failsafe while in LAND triggers non-GPS LAND
+ReleaseNotes.txt:    a) EKF falls back to optical flow if GPS fails
+ReleaseNotes.txt:    b) pre-arm check that GPS configuration has completed
+ReleaseNotes.txt:    b) Guided_NoGPS flight mode added to allow companion computer control in non-GPS environments
+ReleaseNotes.txt:    d) support for GPS_INPUT mavlink message to allow supplying vehicle position data from other sources
+ReleaseNotes.txt:    a) warning if GPS update rate is slow (under 5hz, does not stop arming) 
+ReleaseNotes.txt:4) Allow arming without GPS if using Optical Flow
+ReleaseNotes.txt:    b) always check GPS before arming in Loiter (previously could be disabled if ARMING_CHECK=0)
+ReleaseNotes.txt:    f) ekf-check is enabled only after ekf-origin is set (stops red-yellow flashing led when flying without GPS lock)
+ReleaseNotes.txt:    a) reset altitude even when arming without GPS lock
+ReleaseNotes.txt:    c) altitude reported if vehicle takes off before GPS lock
+ReleaseNotes.txt:4) Stop flight mode - causes vehicle to stop quickly, and does not respond to user input or waypoint movement via MAVLink.  Requires GPS, will be renamed to Brake mode.
+ReleaseNotes.txt:    a) Home position set to latest arm position (it was being set to previous disarm location or first GPS lock position)
+ReleaseNotes.txt:    c) Pixhawk LED turns green before arming only after GPS HDOP falls below 2.3 (only in flight modes requiring GPS)
+ReleaseNotes.txt:    d) use primary GPS for LED status (instead of always using first GPS)
+ReleaseNotes.txt:1) DCM check triggers LAND if yaw disagrees with GPS by > 60deg (configure with DCM_CHECK_THRESH param) and in Loiter, PosHold, Auto, etc 
+ReleaseNotes.txt:    b) fix Mediatek GPS configuration so update rate is set correctly to 5hz
+ReleaseNotes.txt:    d) EKF bug fixes when recovering from GPS glitches (affects only Pixhawks using EKF)
+ReleaseNotes.txt:    c) EKF only apply centrifugal corrections when GPS has at least 6 satellites (Pixhawk with EKF enabled only)
+ReleaseNotes.txt:    b) resolve GPS driver buffer overflow that could lead to missed GPS messages on Pixhawk/PX4 boards
+ReleaseNotes.txt:    c) When GPS or Baro glitch clears, the inertial nav velocities are *not* reset reducing chance of sudden vehicle lean
+ReleaseNotes.txt:    b) Barometer glitch protection added.  BAROGLTCH_DIST and BAROGLTCH_ACCEL parameters control sensitivity similar to GPSGLITCH protection
+ReleaseNotes.txt:    a) increased default circular Fence radius to 300m to reduce chance of breach when GPS lock first acquired
+ReleaseNotes.txt:    b) Dual GPS support (secondary GPS output is simply logged, not actually used yet)
+ReleaseNotes.txt:1) GPS Glitch detection disabled when connected via USB
+ReleaseNotes.txt:    b) Reduce GPSGLITCH_RADIUS to 2m (was 5m) to catch glitches faster
+ReleaseNotes.txt:2) Smoother inertial nav response to missed GPS messages
+ReleaseNotes.txt:    c) ARMING_CHECK allows turning on/off individual checks for baro, GPS, compass, parameters, board voltage, radio
+ReleaseNotes.txt:    d) detect Ublox GPS running at less than 5hz and resend configuration
+ReleaseNotes.txt:    e) GPSGlitch acceptable radius reduced to 5m (stricter detection of glitches)
+ReleaseNotes.txt:    g) GPS failsafe options to trigger AltHold instead of LAND or to trigger LAND even if in flight mode that does not require GPS
+ReleaseNotes.txt:    b) inertial nav baro and gps delay compensation fix (contribution from Neurocopter)
+ReleaseNotes.txt:    c) GPS failsafe was invoking LAND mode which still used GPS for horizontal control
+ReleaseNotes.txt:3) GPS Glitch improvements:
+ReleaseNotes.txt:       a) added GPS glitch check to arming check
+ReleaseNotes.txt:       b) parameters for vehicle max acceleration (GPSGLITCH_ACCEL) and always-ok radius (GPSGLICH_RADIUS)
+ReleaseNotes.txt:1) GPS Glitch protection - gps positions are compared with the previous gps position.  Position accepted if within 10m or copter could have reached the position with max accel of 10m/s/s.
+ReleaseNotes.txt:    b) RGB LED (aka toshiba led) changed so that disarmed flashes, armed is either blue (if no gps lock) or green (if gps lock)
+ReleaseNotes.txt:2) PX4/pixhawk auto-detect internal/external compass so COMPASS_ORIENT should be set to ORIENTATION_NONE if using GPS+compass module
+ReleaseNotes.txt:    c) arming check that GPS hdop is > 2.0 (disable by setting GPS_HDOP parameter to 900)
+ReleaseNotes.txt:1) bug fix to Fence checking position after GPS lock was lost
+ReleaseNotes.txt:2) bug fix to LAND so that it does not attempt to maintain horizontal position without GPS lock
+ReleaseNotes.txt:    i) check for gps lock when entering failsafe
+ReleaseNotes.txt:    v) GPS failsafe enabled by default (will LAND if loses GPS in Loiter, AUTO, Guided modes)
+ReleaseNotes.txt:8) centrifugal correction disabled when sat count less than 6 (AHRS_GPS_MINSATS)
+ReleaseNotes.txt:5) mediatek gps driver improvements [Craig]
+ReleaseNotes.txt:- GPS NMEA bug fix (Alexey Kozin)
+ReleaseNotes.txt:- resolved twitching when no GPS attached (Tridge)
+ReleaseNotes.txt:- fixed loss of altitude if alt hold is engaged before first GPS lock (Randy/Jason)
+ArduCopter.cpp:    SCHED_TASK(update_GPS,            50,    200),
+ArduCopter.cpp:            DataFlash.Log_Write_Camera(ahrs, gps, current_loc);
+ArduCopter.cpp:    if (should_log(MASK_LOG_NTUN) && (mode_requires_GPS(control_mode) || landing_with_GPS())) {
+ArduCopter.cpp:void Copter::update_GPS(void)
+ArduCopter.cpp:    static uint32_t last_gps_reading[GPS_MAX_INSTANCES];   // time of last gps message
+ArduCopter.cpp:    bool gps_updated = false;
+ArduCopter.cpp:    gps.update();
+ArduCopter.cpp:    // log after every gps message
+ArduCopter.cpp:    for (uint8_t i=0; i<gps.num_sensors(); i++) {
+ArduCopter.cpp:        if (gps.last_message_time_ms(i) != last_gps_reading[i]) {
+ArduCopter.cpp:            last_gps_reading[i] = gps.last_message_time_ms(i);
+ArduCopter.cpp:            // log GPS message
+ArduCopter.cpp:            if (should_log(MASK_LOG_GPS) && !ahrs.have_ekf_logging()) {
+ArduCopter.cpp:                DataFlash.Log_Write_GPS(gps, i);
+ArduCopter.cpp:            gps_updated = true;
+ArduCopter.cpp:    if (gps_updated) {
+ArduCopter.cpp:        set_system_time_from_GPS();
+ArduCopter.cpp:        if (gps.status() >= AP_GPS::GPS_OK_FIX_3D) {
+terrain.cpp:    if (should_log(MASK_LOG_GPS)) {
+APM_Config_mavlink_hil.h:// HIL_PORT to 1. This uses the port that would have been used for the gps
+APM_Config_mavlink_hil.h:// headers onto the gps port connection on the apm
+system.cpp:    // Do GPS init
+system.cpp:    gps.init(&DataFlash, serial_manager);
+Copter.h:#include <AP_GPS/AP_GPS.h>             // ArduPilot GPS library
+Copter.h:    AP_GPS gps;
+Copter.h:    AP_AHRS_NavEKF ahrs{ins, barometer, gps, rangefinder, EKF, EKF2, AP_AHRS_NavEKF::FLAG_ALWAYS_USE_EKF};
+Copter.h:            uint8_t pre_arm_check           : 1; // 4       // true if all pre-arm checks (rc, accel calibration, gps lock) have been performed
+Copter.h:            uint8_t system_time_set         : 1; // 16      // true if the system time has been set from the GPS
+Copter.h:            uint8_t gps_base_pos_set        : 1; // 17      // true when the gps base position has been set (used for RTK gps only)
+Copter.h:    // GPS variables
+Copter.h:    // current_loc uses the baro/gps soloution for altitude rather than gps only.
+Copter.h:    void update_GPS(void);
+Copter.h:    bool gps_checks(bool display_failure);
+Copter.h:    void set_system_time_from_GPS();
+Copter.h:    bool guided_nogps_init(bool ignore_checks);
+Copter.h:    void guided_nogps_run();
+Copter.h:    void land_gps_run();
+Copter.h:    void land_nogps_run();
+Copter.h:    void land_do_not_use_GPS();
+Copter.h:    bool landing_with_GPS();
+Copter.h:    bool mode_requires_GPS(control_mode_t mode);
+Copter.h:    bool pre_arm_gps_checks(bool display_failure);
