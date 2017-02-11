@@ -59,6 +59,7 @@ void RCInput_SBUS::init()
         // use BOTHER to specify speed directly in c_[io]speed member
         tio.c_cflag |= (CS8 | CSTOPB | CLOCAL | PARENB | BOTHER | CREAD);
         tio.c_ispeed = 100000;
+        printf("\n SBUS Speed %d \n", tio.c_ispeed);
         tio.c_ospeed = 100000;
         // see select() comment below
         tio.c_cc[VMIN] = SBUS_FRAME_SIZE;
@@ -68,6 +69,7 @@ void RCInput_SBUS::init()
             fd = -1;
             return;
         }
+        printf("\n#######################  SBUS OPEN  ##############################\n");
     }
 }
 
