@@ -16,7 +16,6 @@ void Copter::get_pilot_desired_lean_angles(float roll_in, float pitch_in, float 
 
     // limit max lean angle
     angle_max = constrain_float(angle_max, 1000, aparm.angle_max);
-
     // scale roll_in, pitch_in to ANGLE_MAX parameter range
     float scaler = aparm.angle_max/(float)ROLL_PITCH_YAW_INPUT_MAX;
     roll_in *= scaler;

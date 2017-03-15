@@ -81,6 +81,10 @@ bool Copter::set_mode(control_mode_t mode, mode_reason_t reason)
             success = flip_init(ignore_checks);
             break;
 
+        case POPBALLOON:
+                  success = popballoon_init(ignore_checks);
+                  break;
+
 #if AUTOTUNE_ENABLED == ENABLED
         case AUTOTUNE:
             success = autotune_init(ignore_checks);
@@ -216,6 +220,10 @@ void Copter::update_flight_mode()
         case FLIP:
             flip_run();
             break;
+
+        case POPBALLOON:
+        	popballoon_run();
+        	break;
 
 #if AUTOTUNE_ENABLED == ENABLED
         case AUTOTUNE:
@@ -421,6 +429,9 @@ void Copter::print_flight_mode(AP_HAL::BetterStream *port, uint8_t mode)
     case GUIDED_NOGPS:
         port->print("GUIDED_NOGPS");
         break;
+    case POPBALLOON:
+    	port->print("POPBALLOON");
+    	break;
     default:
         port->printf("Mode(%u)", (unsigned)mode);
         break;

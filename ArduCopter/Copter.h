@@ -927,6 +927,10 @@ private:
     void avoid_adsb_run();
     bool avoid_adsb_set_velocity(const Vector3f& velocity_neu);
 
+    //support for pop balloon custom flight mode
+    bool popballoon_init(bool ignore_checks);
+    void popballoon_run();
+
     void ekf_check();
     bool ekf_over_threshold();
     void failsafe_ekf_event();
