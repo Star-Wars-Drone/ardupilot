@@ -37,7 +37,8 @@ private:
 #elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DISCO
     const char *device_path = "/dev/uart-sbus";
 #elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_DB410C
-    const char *device_path = "/dev/ttyACM0";
+//    const char *device_path = "/dev/ttyACM0";
+    const char *device_path = "/dev/ttyUSB0";
 #else
     const char *device_path = nullptr;
 #endif
