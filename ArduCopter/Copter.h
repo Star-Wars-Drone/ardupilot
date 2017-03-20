@@ -931,6 +931,21 @@ private:
     bool popballoon_init(bool ignore_checks);
     void popballoon_run();
 
+    //testspin function and variable declarations
+    bool testspin_init(bool ignore_checks);
+    void testspin_run();
+    void testspin_state();
+    bool testspin_start; //Check for start
+    bool testspin_takeoff_start; // Check for takeoff start
+    bool testspin_spin_start; // Check for spin start
+    bool testspin_land_start; // Check for land start
+    Vector3f gyro_data;
+    float gyro_z;
+    int gyro_count;
+	Location testspin_dest;
+	float testspin_rads;
+	int testspin_mode;
+
     void ekf_check();
     bool ekf_over_threshold();
     void failsafe_ekf_event();

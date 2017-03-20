@@ -1,5 +1,7 @@
 #include "Copter.h"
 
+
+
 /*
  * High level calls to set and update flight modes logic for individual
  * flight modes is in control_acro.cpp, control_stabilize.cpp, etc
@@ -82,8 +84,11 @@ bool Copter::set_mode(control_mode_t mode, mode_reason_t reason)
             break;
 
         case POPBALLOON:
-                  success = popballoon_init(ignore_checks);
-                  break;
+            success = popballoon_init(ignore_checks);
+            break;
+        case TEST_SPIN:
+        	success = testspin_init(ignore_checks);
+        	break;
 
 #if AUTOTUNE_ENABLED == ENABLED
         case AUTOTUNE:
@@ -224,6 +229,9 @@ void Copter::update_flight_mode()
         case POPBALLOON:
         	popballoon_run();
         	break;
+        case TEST_SPIN:
+        	testspin_run();
+        	break;
 
 #if AUTOTUNE_ENABLED == ENABLED
         case AUTOTUNE:
@@ -256,6 +264,7 @@ void Copter::update_flight_mode()
         default:
             break;
     }
+
 }
 
 // exit_mode - high level call to organise cleanup as a flight mode is exited
@@ -431,6 +440,9 @@ void Copter::print_flight_mode(AP_HAL::BetterStream *port, uint8_t mode)
         break;
     case POPBALLOON:
     	port->print("POPBALLOON");
+    	break;
+    case TEST_SPIN:
+    	port->print("TEST_SPIN");
     	break;
     default:
         port->printf("Mode(%u)", (unsigned)mode);

@@ -107,7 +107,8 @@ enum control_mode_t {
     THROW =        18,  // throw to launch mode using inertial/GPS system, no pilot input
     AVOID_ADSB =   19,  // automatic avoidance of obstacles in the macro scale - e.g. full-sized aircraft
     GUIDED_NOGPS = 20,  // guided mode but only accepts attitude and altitude
-    POPBALLOON= 21,
+    POPBALLOON =   21,	// copy of stabilize to test to see if we can switch into a custom mode
+	TEST_SPIN =    22,  // drone turns in the air.... its really boring
 
 };
 
@@ -281,6 +282,13 @@ enum LandStateType {
 // bit options for DEV_OPTIONS parameter
 enum DevOptions {
     DevOptionADSBMAVLink = 1,
+};
+
+//TestSpin States
+enum testspin_modes {
+	takeoff,
+	spin,
+	land,
 };
 
 //  Logging parameters

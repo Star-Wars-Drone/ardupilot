@@ -344,27 +344,27 @@ class raspilot(linux):
         env.DEFINES.update(
             CONFIG_HAL_BOARD_SUBTYPE = 'HAL_BOARD_SUBTYPE_LINUX_RASPILOT',
         )
-%FIXME Added DB410C toolchain
-class db410c(linux):
-    toolchain = 'aarch64-linux-gnu'
+#%FIXME Added DB410C toolchain
+#class db410c(linux):
+ #   toolchain = 'aarch64-linux-gnu'
 
-    def configure_env(self, cfg, env):
-        super(db410c, self).configure_env(cfg, env)
+  #  def configure_env(self, cfg, env):
+   #     super(db410c, self).configure_env(cfg, env)
 
-        env.DEFINES.update(
-            CONFIG_HAL_BOARD_SUBTYPE = 'HAL_BOARD_SUBTYPE_LINUX_DB410C',
-        )
+    #    env.DEFINES.update(
+     #       CONFIG_HAL_BOARD_SUBTYPE = 'HAL_BOARD_SUBTYPE_LINUX_DB410C',
+      #  )
 
-%FIXME Added HIKEY toolchain
-class hikey(linux):
-    toolchain = 'aarch64-linux-gnu'
+#%FIXME Added HIKEY toolchain
+#class hikey(linux):
+ #   toolchain = 'aarch64-linux-gnu'
 
-    def configure_env(self, cfg, env):
-        super(hikey, self).configure_env(cfg, env)
+  #  def configure_env(self, cfg, env):
+   #     super(hikey, self).configure_env(cfg, env)
 
-        env.DEFINES.update(
-            CONFIG_HAL_BOARD_SUBTYPE = 'HAL_BOARD_SUBTYPE_LINUX_HIKEY',
-        )
+    #    env.DEFINES.update(
+     #       CONFIG_HAL_BOARD_SUBTYPE = 'HAL_BOARD_SUBTYPE_LINUX_HIKEY',
+      #  )
 
 class erlebrain2(linux):
     toolchain = 'arm-linux-gnueabihf'
