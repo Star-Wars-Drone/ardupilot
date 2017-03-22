@@ -946,6 +946,14 @@ private:
 	float testspin_rads;
 	int testspin_mode;
 
+	//testtake off function and variable declarations
+    bool testtakeoff_init(bool ignore_checks);
+    void testtakeoff_run();
+    int testtakeoff_mode;
+    bool testtakeoff_takeoff_start; // Check for takeoff start
+    bool testtakeoff_land_start; // Check for land start
+    Location testtakeoff_dest;
+
     void ekf_check();
     bool ekf_over_threshold();
     void failsafe_ekf_event();

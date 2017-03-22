@@ -266,9 +266,6 @@ void Copter::fast_loop()
     // check if ekf has reset target heading or position
     check_ekf_reset();
 
-    //run custom mode
-    testspin_state();
-
     // run the attitude controllers
     update_flight_mode();
 

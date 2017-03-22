@@ -109,6 +109,7 @@ enum control_mode_t {
     GUIDED_NOGPS = 20,  // guided mode but only accepts attitude and altitude
     POPBALLOON =   21,	// copy of stabilize to test to see if we can switch into a custom mode
 	TEST_SPIN =    22,  // drone turns in the air.... its really boring
+	TEST_TAKEOFF = 23,  // drone takeoffs then lands
 
 };
 
@@ -290,6 +291,7 @@ enum testspin_modes {
 	spin,
 	land,
 };
+
 
 //  Logging parameters
 #define TYPE_AIRSTART_MSG               0x00

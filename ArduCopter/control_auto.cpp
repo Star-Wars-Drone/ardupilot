@@ -13,7 +13,7 @@
  */
 
 /*
- *  While in the auto flight mode, navigation or do/now commands can be run.
+ *  While in the auto flight mode, nakvigation or do/now commands can be run.
  *  Code in this file implements the navigation commands
  */
 

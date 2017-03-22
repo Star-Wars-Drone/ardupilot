@@ -89,6 +89,9 @@ bool Copter::set_mode(control_mode_t mode, mode_reason_t reason)
         case TEST_SPIN:
         	success = testspin_init(ignore_checks);
         	break;
+        case TEST_TAKEOFF:
+        	success = testtakeoff_init(ignore_checks);
+        	break;
 
 #if AUTOTUNE_ENABLED == ENABLED
         case AUTOTUNE:
@@ -231,6 +234,9 @@ void Copter::update_flight_mode()
         	break;
         case TEST_SPIN:
         	testspin_run();
+        	break;
+        case TEST_TAKEOFF:
+        	testtakeoff_run();
         	break;
 
 #if AUTOTUNE_ENABLED == ENABLED
